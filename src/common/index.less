@@ -76,6 +76,7 @@ html{
   margin:0;
   padding:0;
   width:100%;
+  min-height:100%;
   overflow-x:hidden;
   font-size:100px;
 }
@@ -83,10 +84,12 @@ html{
 body{
   margin:0;
   padding:0;
+  padding-top:0.72rem;
   user-select:none;
   box-sizing:border-box;
-  background:#e8f4ff;
+  background:#fff;
   width:100%;
+  min-height:100%;
   overflow-x:hidden;
 }
 
@@ -159,15 +162,12 @@ a{
   overflow:hidden !important;
 }
 
-//@media screen and (max-device-width:320px){
-//  html{
-//    font-size:84px;
-//  }
-//}
-@media screen and (min-device-width:414px){
-  html{
-    font-size:110px;
-  }
-}
+//@import '../component/mlogin/index.less';
+//@import '../component/topnav/index.less';
+//@import '../component/ciframe/index.less';
 
-@import '../component/mlogin/index.less';
+.gwrap{
+  margin:0 auto;
+  width:12.7rem;
+  box-sizing:border-box;
+}
