@@ -28,9 +28,11 @@ let util = {
     return env.ajax(url, data, success, error, 'post');
   },
   goto: function(url) {
-    location.href = this.getUrl(url);
+    if(url.charAt(0) === '/') {
+      url = url.slice(1);
+    }
+    location.href = '/pc/' + url;
   },
-  getUrl: env.getUrl,
   sort,
   ERROR_MESSAGE: '人气大爆发，请稍后再试。'
 };

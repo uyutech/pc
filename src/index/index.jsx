@@ -13,11 +13,6 @@ let topNav = migi.render(
   document.body
 );
 
-let pathname = location.path;
-if(pathname === '/' || !pathname) {
-  pathname = '/home';
-}
-
 let hash = location.hash;
 if(hash.length) {
   hash = hash.slice(1);

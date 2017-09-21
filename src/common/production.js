@@ -27,10 +27,10 @@ export default {
         },
         success: function (data, state, xhr) {
           // console.log('ajax success: ' + url + ', ' + JSON.stringify(data));
-          if(!data.success && data.code === 1000) {
-            location.href = window.LOGIN_URL;
-            return;
-          }
+          // if(!data.success && data.code === 1000) {
+          //   location.href = window.LOGIN_URL;
+          //   return;
+          // }
           success(data, state, xhr);
         },
         error: function (data) {
@@ -44,7 +44,4 @@ export default {
     }
     return load();
   },
-  getUrl: function(url) {
-    location.href = url;
-  }
 };

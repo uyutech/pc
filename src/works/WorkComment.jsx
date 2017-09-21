@@ -164,7 +164,7 @@ class WorkComment extends migi.Component {
     this.rootId = null;
   }
   input(e, vd) {
-    if(window.isLogin !== 'True') {
+    if(window.$CONFIG.isLogin !== 'True') {
       migi.eventBus.emit('NEED_LOGIN');
     }
     else {
@@ -173,7 +173,7 @@ class WorkComment extends migi.Component {
     }
   }
   focus(e, vd) {
-    if(window.isLogin !== 'True') {
+    if(window.$CONFIG.isLogin !== 'True') {
       migi.eventBus.emit('NEED_LOGIN');
     }
   }
