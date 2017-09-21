@@ -13,15 +13,15 @@ if(parent !== window) {
       let top = document.body.scrollTop || document.documentElement.scrollTop;
       parent.setTop && parent.setTop(top);
     });
+    document.body.addEventListener('click', function(e) {
+      if(e.target.nodeName === 'A') {
+        let href = e.target.href || '';
+        href = href.replace(/https?:\/\/[^/]+/, '');
+        if(href.charAt(0) === '/') {
+          e.preventDefault();
+          parent.setHash && parent.setHash(href);
+        }
+      }
+    });
   }
-}
-else {
-  let pathname = location.pathname;
-  if(pathname === '/' || !pathname) {
-    pathname = '/#/home';
-  }
-  else {
-    pathname = '/#' + pathname;
-  }
-  // location.href = pathname;
 }

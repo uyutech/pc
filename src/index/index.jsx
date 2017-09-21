@@ -13,23 +13,29 @@ let topNav = migi.render(
   document.body
 );
 
-let hash = location.hash;
-if(hash.length) {
-  hash = hash.slice(1);
-  if(!hash.length || hash.charAt(0) !== '/') {
-    hash = '/home';
-  }
-}
-else {
-  hash = '/home';
-}
-
 let cIframe = migi.render(
   <CIframe/>,
   document.body
 );
-cIframe.element.contentWindow.location.href = hash;
 
 window.setTop = function(top) {
   topNav.setTop(top);
 };
+window.setHash = function(hash) {
+  location.hash = hash;
+};
+
+function goto(hash) {
+  hash = hash || '';
+  hash = hash.replace(/^#/, '');
+  if(!hash || hash === '/') {
+    hash = '/find';
+  }
+  cIframe.element.contentWindow.location.href = hash;
+}
+
+window.addEventListener('hashchange', function() {
+  goto(location.hash);
+});
+
+goto(location.hash);

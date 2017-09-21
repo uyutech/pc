@@ -11,5 +11,5 @@ let works = migi.render(
   <Works/>,
   '#page'
 );
-works.setID(window.worksID);
+works.setID(window.$CONFIG.worksID);
 works.load();
