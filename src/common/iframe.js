@@ -13,6 +13,8 @@ if(parent !== window) {
       let top = document.body.scrollTop || document.documentElement.scrollTop;
       parent.setTop && parent.setTop(top);
     });
+    let top = document.body.scrollTop || document.documentElement.scrollTop;
+    parent.setTop && parent.setTop(top);
     document.body.addEventListener('click', function(e) {
       if(e.target.nodeName === 'A') {
         let href = e.target.href || '';
@@ -24,4 +26,7 @@ if(parent !== window) {
       }
     });
   }
+}
+else if(location.pathname !== '/') {
+  location.href = '/#' + location.pathname;
 }
