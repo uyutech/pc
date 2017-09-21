@@ -6,6 +6,11 @@ class TopNav extends migi.Component {
   constructor(...data) {
     super(...data);
   }
+  setTop(top) {
+    top = Math.min(top, 72);
+    $(this.element).css('-webkit-transform', `translateY(${-top}px)`);
+    $(this.element).css('transform', `translateY(${-top}px)`);
+  }
   render() {
     return <div class="cp-topnav gwrap">
       <a href="#/">每天转转圈 玩转每个圈</a>

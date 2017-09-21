@@ -5,7 +5,6 @@
 import './home.html';
 import './index.less';
 
-import '../common/iframe';
 import HotWork from '../component/hotwork/HotWork.jsx';
 
 migi.render(

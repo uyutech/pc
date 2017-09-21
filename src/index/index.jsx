@@ -18,8 +18,23 @@ if(pathname === '/' || !pathname) {
   pathname = '/home';
 }
 
+let hash = location.hash;
+if(hash.length) {
+  hash = hash.slice(1);
+  if(!hash.length || hash.charAt(0) !== '/') {
+    hash = '/home';
+  }
+}
+else {
+  hash = '/home';
+}
+
 let cIframe = migi.render(
   <CIframe/>,
   document.body
 );
-cIframe.element.contentWindow.location.href = pathname;
+cIframe.element.contentWindow.location.href = hash;
+
+window.setTop = function(top) {
+  topNav.setTop(top);
+};

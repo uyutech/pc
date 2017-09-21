@@ -6,7 +6,13 @@ let parent = window.parent;
 if(parent !== window) {
   let hostname = parent.location.hostname;
   if(hostname.indexOf('circling.cc') === -1) {
-    location.href = '//baidu.com';
+    location.href = '//404.html';
+  }
+  else {
+    window.addEventListener('scroll', function() {
+      let top = document.body.scrollTop || document.documentElement.scrollTop;
+      parent.setTop && parent.setTop(top);
+    });
   }
 }
 else {
@@ -17,5 +23,5 @@ else {
   else {
     pathname = '/#' + pathname;
   }
-  location.href = pathname;
+  // location.href = pathname;
 }
