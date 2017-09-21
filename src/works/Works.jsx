@@ -6,16 +6,38 @@ import Title from './Title.jsx';
 import Author from './Author.jsx';
 import Media from './Media.jsx';
 import itemTemplate from './itemTemplate';
+import Intro from './Intro.jsx';
+import WorkComment from './WorkComment.jsx';
 
 class Works extends migi.Component {
   constructor(...data) {
     super(...data);
+    let self = this;
+    self.on(migi.Event.DOM, function() {
+      let media = self.ref.media;
+      let workComment = self.ref.workComment;
+      media.on('switchSubWork', function(data) {
+        self.subWorkID = data[0].ItemID;
+        workComment.barrageTime = 0;
+      });
+      media.on('timeupdate', function(data) {
+        workComment.barrageTime = data;
+      });
+    })
   }
-  load(worksID) {
+  @bind worksID
+  @bind subWorkID
+  setID(worksID) {
+    this.worksID = worksID;
+    this.ref.workComment.worksID = worksID;
+  }
+  load() {
     let self = this;
     let title = self.ref.title;
     let media = self.ref.media;
-    util.postJSON('api/works/GetWorkDetails', { WorksID: worksID }, function(res) {
+    let workComment = self.ref.workComment;
+    workComment.load();
+    util.postJSON('api/works/GetWorkDetails', { WorksID: self.worksID }, function(res) {
       if(res.success) {
         let data = res.data;
         title.title = data.Title;
@@ -109,8 +131,17 @@ class Works extends migi.Component {
       }
     });
   }
+  clickType(e, vd, tvd) {
+    let $li = $(tvd.element);
+    if(!$li.hasClass('cur')) {
+      $(vd.element).find('.cur').removeClass('cur');
+      $li.addClass('cur');
+      let type = tvd.props.rel;
+      this.ref.media.switchType(type);
+    }
+  }
   render() {
-    return <div class="works">
+    return <div class="works fn-clear">
       <Title ref="title"/>
       <Author ref="author"/>
       <Media ref="media"/>
@@ -118,6 +149,8 @@ class Works extends migi.Component {
         <li class="audio fn-hide" rel="audio">音频</li>
         <li class="video fn-hide" rel="video">视频</li>
       </ul>
+      <Intro ref="intro"/>
+      <WorkComment ref="workComment"/>
     </div>;
   }
 }

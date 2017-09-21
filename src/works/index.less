@@ -3,6 +3,8 @@
  */
 
 @import '../common/var.less';
+@import '../component/comment/index.less';
+@import '../component/page/index.less';
 
 .works{
   > .title{
@@ -80,7 +82,7 @@
       display:block;
       margin-top:0.1rem;
       height:0.02rem;
-      background:@bgLinearGradient;
+      background:@bgLinearGradientHorizontal;
     }
     .c{
       padding:0.1rem 0;
@@ -111,17 +113,29 @@
     }
   }
   > .media{
+    position:relative;
+    background:#F9F9F9;
     padding-bottom:0.1rem;
     background-size:cover;
     background-repeat:no-repeat;
     background-position:center;
     border-radius:0.1rem;
+    &:after{
+      position:absolute;
+      left:0;
+      bottom:0;
+      width:100%;
+      height:1.2rem;
+      background:linear-gradient(rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 20%, rgba(0,0,0,0.7) 100%);
+      content:' ';
+      border-bottom-left-radius:0.1rem;
+      border-bottom-right-radius:0.1rem;
+    }
     > .c{
       position:relative;
-      height:2.1rem;
+      height:7.14rem;
       z-index:10;
       margin:0 auto;
-      width:12rem;
       background-size:cover;
       background-repeat:no-repeat;
       background-position:center;
@@ -382,6 +396,160 @@
         cursor:default;
         line-height:0.24rem;
       }
+    }
+  }
+  > .intro{
+    float:left;
+    width:6rem;
+    h4{
+      color:#4E8EB0;
+      font-size:0.2rem;
+      font-weight:400;
+    }
+    .line{
+      display:block;
+      margin-top:0.1rem;
+      height:0.02rem;
+      background:@bgLinearGradientHorizontal;
+    }
+  }
+  > .comments{
+    float:right;
+    width:6rem;
+    h4{
+      color:#4E8EB0;
+      font-size:0.2rem;
+      font-weight:400;
+    }
+    .line{
+      display:block;
+      margin-top:0.1rem;
+      height:0.02rem;
+      background:@bgLinearGradientHorizontal;
+    }
+    .fn{
+      position:relative;
+      padding-top:0.4rem;
+      .type{
+        position:absolute;
+        top:0.1rem;
+        right:0.1rem;
+        background:#DADADA;
+        border-radius:0.18rem;
+        &:before{
+          position:absolute;
+          left:0;
+          top:0;
+          width:0.44rem;
+          height:100%;
+          background:#F0F0F0;
+          border-radius:0.18rem;
+          content:' ';
+          transition:transform 0.2s;
+        }
+        &.alt:before{
+          transform:translate3d(100%, 0, 0);
+        }
+        li{
+          position:relative;
+          float:left;
+          padding:0 0.1rem;
+          width:0.24rem;
+          height:0.24rem;
+          line-height:0.24rem;
+          border-radius:0.18rem;
+          color:#A8A8A8;
+          font-size:0.12rem;
+          white-space:nowrap;
+          overflow:hidden;
+          &.cur{
+            color:#4C8DAF;
+          }
+        }
+      }
+      .type2{
+        position:absolute;
+        top:0.1rem;
+        left:0.1rem;
+        background:#DADADA;
+        border-radius:0.18rem;
+        &:before{
+          position:absolute;
+          left:0;
+          top:0;
+          width:0.44rem;
+          height:100%;
+          background:#F0F0F0;
+          border-radius:0.18rem;
+          content:' ';
+          transition:transform 0.2s;
+        }
+        &.alt:before{
+          transform:translate3d(100%, 0, 0);
+        }
+        li{
+          position:relative;
+          float:left;
+          padding:0 0.1rem;
+          width:0.24rem;
+          height:0.24rem;
+          line-height:0.24rem;
+          border-radius:0.18rem;
+          font-size:0.12rem;
+          white-space:nowrap;
+          color:#A8A8A8;
+          overflow:hidden;
+          &.cur{
+            color:#4C8DAF;
+            cursor:pointer;
+          }
+        }
+      }
+    }
+    .reply{
+      margin:0.05rem 0;
+      padding-left:0.1rem;
+      font-size:0.12rem;
+      color:#999;
+    }
+    .form{
+      position:relative;
+      .text{
+        display:block;
+        padding:0 0.1rem;
+        width:4.8rem;
+        height:0.36rem;
+        background:#EDF3F7;
+        border:none;
+        border-radius:0.1rem;
+        font-size:0.12rem;
+        &::placeholder{
+          color:#919191;
+        }
+      }
+      .submit{
+        position:absolute;
+        top:0;
+        right:0;
+        display:block;
+        width:0.84rem;
+        height:0.36rem;
+        color:#fff;
+        font-size:0.12rem;
+        background:#4E8EB0;
+        border:none;
+        border-radius:0.1rem;
+        &.dis{
+          background:#ccc;
+        }
+      }
+    }
+    .cp-page{
+      margin-top:0.1rem;
+      text-align:right;
+    }
+    .cp-comment{
+      margin-top:0.1rem;
     }
   }
 }

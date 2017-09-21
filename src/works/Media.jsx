@@ -7,7 +7,7 @@ import Audio from './Audio.jsx';
 import Video from './Video.jsx';
 import itemTemplate from './itemTemplate';
 
-let WIDTH;
+let WIDTH = 1270;
 let currentTime = 0;
 let duration = 0;
 
@@ -23,9 +23,9 @@ class Media extends migi.Component {
     super(...data);
     let self = this;
     self.on(migi.Event.DOM, function () {
-      WIDTH = $(this.element).width();
-      let width = $(this.element).width();
-      self.ref.c.element.style.height = Math.round(width / 16 * 9) + 'px';
+      // WIDTH = $(this.element).width();
+      // let width = $(this.element).width();
+      // self.ref.c.element.style.height = Math.round(width / 16 * 9) + 'px';
 
       let $play = $(this.ref.play.element);
       audio = self.ref.audio;
@@ -77,6 +77,8 @@ class Media extends migi.Component {
       $(document).on('mouseup', this.up.bind(this));
     });
   }
+  @bind popular = 0
+  @bind canControl
   setCover(url) {
     if(url) {
       $(this.element).css('background-image', `url(${url})`);
@@ -172,28 +174,19 @@ class Media extends migi.Component {
     $(this.ref.pgb.element).css('-webkit-transform', `translate3d(${percent}%,0,0)`);
     $(this.ref.pgb.element).css('transform', `translate3d(${percent}%,0,0)`);
   }
-  clickType(e, vd, tvd) {
-    let $li = $(tvd.element);
-    if(!$li.hasClass('cur')) {
-      $(vd.element).find('.cur').removeClass('cur');
-      $li.addClass('cur');
-      let type = tvd.props.rel;
-      if(type === 'audio') {
-        video.pause().hide();
-        last = audio.show().currentTime(0);
-      }
-      else if(type === 'video') {
-        audio.pause().hide();
-        last = video.show().currentTime(0);
-      }
-      this.canControl = last.hasLoaded;
-      duration = last.duration;
-      $(this.ref.play.element).removeClass('pause');
-      this.emit('switchSubWork', last.data);
+  switchType(type) {
+    if(type === 'audio') {
+      video.pause().hide();
+      last = audio.show().currentTime(0);
     }
-  }
-  switchTo(index) {
-    $(this.ref.tags.element).find('li').eq(index).click();
+    else if(type === 'video') {
+      audio.pause().hide();
+      last = video.show().currentTime(0);
+    }
+    this.canControl = last.hasLoaded;
+    duration = last.duration;
+    $(this.ref.play.element).removeClass('pause');
+    this.emit('switchSubWork', last.data);
   }
   render() {
     return <div class="media">
