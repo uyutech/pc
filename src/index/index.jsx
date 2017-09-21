@@ -13,10 +13,7 @@ let topNav = migi.render(
   document.body
 );
 
-let cIframe = migi.render(
-  <CIframe/>,
-  document.body
-);
+let cIframe;
 
 window.setTop = function(top) {
   topNav.setTop(top);
@@ -31,6 +28,13 @@ function goto(hash) {
   if(!hash || hash === '/') {
     hash = '/find';
   }
+  if(cIframe) {
+    cIframe.clean();
+  }
+  cIframe = migi.render(
+    <CIframe/>,
+    document.body
+  );
   cIframe.element.contentWindow.location.href = hash;
 }
 

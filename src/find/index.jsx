@@ -4,3 +4,11 @@
 
 import './find.html';
 import './index.less';
+
+import Find from './Find.jsx';
+
+let find = migi.render(
+  <Find/>,
+  '#page'
+);
+find.load();
