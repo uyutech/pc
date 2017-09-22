@@ -22,7 +22,7 @@ window.setHash = function(hash) {
   location.hash = hash;
 };
 
-function goto(hash) {console.log(1,hash);
+function goto(hash) {
   hash = hash || '';
   hash = hash.replace(/^#/, '');
   if(!hash || hash === '/') {
@@ -30,7 +30,7 @@ function goto(hash) {console.log(1,hash);
   }
   if(cIframe) {
     cIframe.clean();
-  }console.log(2,hash);
+  }
   cIframe = migi.render(
     <CIframe/>,
     document.body

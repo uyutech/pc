@@ -17,10 +17,10 @@ class TopNav extends migi.Component {
       <form class="search">
         <input type="text" maxlength="16" placeholder="搜索"/>
       </form>
-      <div class="user">
+      <a href="#/my" class="user">
         <span>用户名</span>
         <img src={ '//zhuanquan.xyz/img/blank.png' }/>
-      </div>
+      </a>
     </div>;
   }
 }

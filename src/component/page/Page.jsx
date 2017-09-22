@@ -81,6 +81,7 @@ class Page extends migi.Component {
   }
   click(e) {
     e.preventDefault();
+    e.stopPropagation();
     var index = e.target.innerHTML;
     if(index && index != this.index) {
       this.index = parseInt(index);
@@ -89,6 +90,7 @@ class Page extends migi.Component {
   }
   prev(e) {
     e.preventDefault();
+    e.stopPropagation();
     if(this.index > 1) {
       this.index--;
       this.emit('page', this.index);
@@ -96,6 +98,7 @@ class Page extends migi.Component {
   }
   next(e) {
     e.preventDefault();
+    e.stopPropagation();
     if(this.index < this.total) {
       this.index++;
       this.emit('page', this.index);

@@ -1,5 +1,5 @@
 /**
- * Created by army8735 on 2017/9/1.
+ * Created by army8735 on 2017/9/19.
  */
 
 import Comment from '../component/comment/Comment.jsx';
@@ -13,7 +13,7 @@ let CurrentCount = 0;
 let ajax;
 let loadEnd;
 
-class WorkComment extends migi.Component {
+class AuthorComment extends migi.Component {
   constructor(...data) {
     super(...data);
     let self = this;
@@ -40,8 +40,7 @@ class WorkComment extends migi.Component {
   @bind replayName
   @bind hasContent
   @bind loading
-  @bind worksID
-  @bind barrageTime
+  @bind authorID
   show() {
     let self = this;
     $(self.element).removeClass('fn-hide');
@@ -63,7 +62,7 @@ class WorkComment extends migi.Component {
       ajax.abort();
     }
     self.loading = true;
-    ajax = util.postJSON('api/works/GetToWorkMessage_List', { WorkID: self.worksID , Skip, Take, SortType, MyComment, CurrentCount }, function(res) {
+    ajax = util.postJSON('api/author/GetToAuthorMessage_List', { AuthorID: self.authorID , Skip, Take, SortType, MyComment, CurrentCount }, function(res) {
       if(res.success) {
         let data = res.data;
         CurrentCount = data.Size;
@@ -100,9 +99,10 @@ class WorkComment extends migi.Component {
       ajax.abort();
     }
     self.loading = true;
-    ajax = util.postJSON('api/works/GetToWorkMessage_List', { WorkID: self.worksID , Skip, Take, SortType, MyComment, CurrentCount: 0 }, function(res) {
+    ajax = util.postJSON('api/author/GetToAuthorMessage_List', { AuthorID: self.authorID , Skip, Take, SortType, MyComment, CurrentCount }, function(res) {
       if(res.success) {
         let data = res.data;
+        CurrentCount = data.Size;
         Skip += Take;
         if(data.data.length) {
           comment.message = '';
@@ -186,12 +186,11 @@ class WorkComment extends migi.Component {
       let ParentID = self.replayId !== null ? self.replayId : -1;
       let RootID = self.rootId !== null ? self.rootId : -1;
       self.loading = true;
-      util.postJSON('api/works/AddComment', {
+      util.postJSON('api/author/AddComment', {
         ParentID,
         RootID,
         Content,
-        subWorkID: self.subWorkID,
-        BarrageTime: self.barrageTime
+        AuthorCommentID: self.authorID,
       }, function(res) {
         if(res.success) {
           $input.val('');
@@ -218,28 +217,24 @@ class WorkComment extends migi.Component {
     }
   }
   render() {
-    return <div class="comments">
-      <h4>评论</h4>
-      <b class="line"/>
-      <div class="fn fn-clear">
-        <ul class="type2 fn-clear" onClick={ { li: this.switchType2 } }>
-          <li class="cur" rel="0">全部</li>
-          <li rel="1">我的</li>
-        </ul>
-        <ul class="type fn-clear" onClick={ { li: this.switchType } }>
-          <li class="cur" rel="0">最新</li>
-          <li rel="1">最热</li>
-        </ul>
-      </div>
+    return <div class="comments fn-hide">
+      <ul class="type2 fn-clear" onClick={ { li: this.switchType2 } }>
+        <li class="cur" rel="0">全部</li>
+        <li rel="1">我的</li>
+      </ul>
+      <ul class="type fn-clear" onClick={ { li: this.switchType } }>
+        <li class="cur" rel="0">最新</li>
+        <li rel="1">最热</li>
+      </ul>
       <div class={ 'reply' + (this.replayId ? '' : ' fn-hidden') } onClick={ this.clickReplay }>回复：{ this.replayName }</div>
       <form class="form" ref="form" onSubmit={ this.submit }>
         <input type="text" class="text" ref="input" placeholder="请输入评论内容" onInput={ this.input } onFocus={ this.focus }/>
         <input type="submit" class={ 'submit' + (this.hasContent && !this.loading ? '' : ' dis') } value="发布评论"/>
       </form>
       <Page ref="page"/>
-      <Comment ref="comment" zanUrl="api/works/AddLikeBehavior" subUrl="api/works/GetTocomment_T_List" delUrl="api/works/DeleteCommentByID"/>
+      <Comment ref="comment" zanUrl="api/author/AddLikeBehavior" subUrl="api/author/GetTocomment_T_List" delUrl="api/author/DeleteCommentByID"/>
     </div>;
   }
 }
 
-export default WorkComment;
+export default AuthorComment;

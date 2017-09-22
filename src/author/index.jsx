@@ -4,3 +4,12 @@
 
 import './author.html';
 import './index.less';
+
+import Author from './Author.jsx';
+
+let author = migi.render(
+  <Author/>,
+  '#page'
+);
+author.setID(window.$CONFIG.authorID);
+author.load();
