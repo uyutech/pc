@@ -43,3 +43,7 @@ window.addEventListener('hashchange', function() {
 });
 
 goto(location.hash);
+
+topNav.on('search', function(kw) {
+  location.hash = '/search/' + kw;
+})

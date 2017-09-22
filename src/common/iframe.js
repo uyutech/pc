@@ -17,11 +17,13 @@ if(parent !== window) {
     parent.setTop && parent.setTop(top);
     document.body.addEventListener('click', function(e) {
       if(e.target.nodeName === 'A') {
-        let href = e.target.href || '';
-        href = href.replace(/https?:\/\/[^/]+/, '');
-        if(href.charAt(0) === '/') {
-          e.preventDefault();
-          parent.setHash && parent.setHash(href);
+        let href = e.target.getAttribute('href') || '';
+        if(href && href.charAt(0) !== '#') {
+          // 相对/根路径或相对路径
+          if(href.charAt(0) !== '/' || href.indexOf('//') !== 0) {
+            e.preventDefault();
+            parent.setHash && parent.setHash(href);
+          }
         }
       }
     });

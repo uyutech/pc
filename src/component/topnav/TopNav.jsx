@@ -11,14 +11,21 @@ class TopNav extends migi.Component {
     $(this.element).css('-webkit-transform', `translateY(${-top}px)`);
     $(this.element).css('transform', `translateY(${-top}px)`);
   }
+  submit(e) {
+    e.preventDefault();
+    let v = this.ref.input.element.value.trim();
+    if(v) {
+      this.emit('search', v);
+    }
+  }
   render() {
     return <div class="cp-topnav gwrap">
       <a href="#/">每天转转圈 玩转每个圈</a>
-      <form class="search">
-        <input type="text" maxlength="16" placeholder="搜索"/>
+      <form class="search" onSubmit={ this.submit }>
+        <input type="text" ref="input" maxlength="16" placeholder="搜索"/>
       </form>
       <a href="#/my" class="user">
-        <span>用户名</span>
+        <span>{ window.$CONFIG.userName || '' }</span>
         <img src={ '//zhuanquan.xyz/img/blank.png' }/>
       </a>
     </div>;
