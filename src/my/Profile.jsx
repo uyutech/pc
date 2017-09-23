@@ -6,6 +6,13 @@ class Profile extends migi.Component {
   constructor(...data) {
     super(...data);
   }
+  click(e) {
+    e.preventDefault();
+    let name = window.prompt('请输入想要修改的昵称', window.$CONFIG.userName).trim();
+    if(name !== window.$CONFIG.userName) {
+      alert(name);
+    }
+  }
   render() {
     return <div class="profile fn-clear">
       <div class="pic">
@@ -13,7 +20,7 @@ class Profile extends migi.Component {
       </div>
       <div class="txt">
         <strong>{ window.$CONFIG.userName }</strong>
-        <a href="#" class="edit">编辑</a>
+        <a href="#" class="edit" onClick={ this.click }>编辑</a>
       </div>
     </div>;
   }
