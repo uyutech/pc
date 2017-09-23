@@ -2,8 +2,9 @@
  * Created by army8735 on 2017/9/22.
  */
 
-import User from './User.jsx';
-import Author from './Author.jsx';
+import Profile from './Profile.jsx';
+import Follow from './Follow.jsx';
+import Favor from './Favor.jsx';
 
 class My extends migi.Component {
   constructor(...data) {
@@ -11,10 +12,10 @@ class My extends migi.Component {
   }
   render() {
     return <div class="my">
-      <div class="status fn-clear">
-        <User/>
-        <Author/>
-      </div>
+      <Profile/>
+      <Follow/>
+      <Favor/>
+      <a href="#" class="loginout">退出登录</a>
     </div>;
   }
 }

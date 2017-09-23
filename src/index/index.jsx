@@ -21,8 +21,12 @@ window.setTop = function(top) {
 window.setHash = function(hash) {
   location.hash = hash;
 };
+window.loginWeibo = function(url) {
+  let hash = location.hash || '';
+  location.href = url + '?goto=' + encodeURIComponent('//' + location.hostname + hash);
+};
 
-function goto(hash) {
+function iframeGoto(hash) {
   hash = hash || '';
   hash = hash.replace(/^#/, '');
   if(!hash || hash === '/') {
@@ -39,11 +43,11 @@ function goto(hash) {
 }
 
 window.addEventListener('hashchange', function() {
-  goto(location.hash);
+  iframeGoto(location.hash);
 });
 
-goto(location.hash);
+iframeGoto(location.hash);
 
 topNav.on('search', function(kw) {
   location.hash = '/search/' + kw;
-})
+});
