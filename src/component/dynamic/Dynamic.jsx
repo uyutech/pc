@@ -13,6 +13,12 @@ class Dynamics extends migi.Component {
   }
   render() {
     return <div class="cp-dynamic">
+      <h3>{ this.props.title }</h3>
+      <b class="line"/>
+      <div class="fn fn-clear">
+        <a href="#" class="prev">查看上页</a>
+        <a href="#" class="next">查看下页</a>
+      </div>
       <ul class={ this.list.length ? '' : 'fn-hide' } onClick={ { li: this.click } }>
         {
           this.list.map(function(item) {

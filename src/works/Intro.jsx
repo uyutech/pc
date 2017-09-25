@@ -144,7 +144,7 @@ class Intro extends migi.Component {
   @bind tags = []
   render() {
     return <div class="intro">
-      <h4>简介</h4>
+      <h3>简介</h3>
       <b class="line"/>
       <div class="tag">
         <ul class="fn-clear">

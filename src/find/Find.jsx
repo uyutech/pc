@@ -3,6 +3,9 @@
  */
 
 import Banner from './Banner.jsx';
+import HotWork from '../component/hotwork/HotWork.jsx';
+import HotCollection from '../component/hotcollection/HotCollection.jsx';
+import HotAuthor from '../component/hotauthor/HotAuthor.jsx';
 import DoubleCheck from '../component/doublecheck/DoubleCheck.jsx';
 import PlayList from '../component/playlist/PlayList.jsx';
 
@@ -75,10 +78,19 @@ class Find extends migi.Component {
         self.ref.playList.setData(data.data);
       }
     });
+    util.postJSON('api/find/GetFindWorkList', { Parameter, Skip: 1, Take: 10, SortType: '0' }, function(res) {
+      if(res.success) {
+        let data = res.data;
+        self.ref.playList.setData2(data.data);
+      }
+    });
   }
   render() {
     return <div class="find">
       <Banner/>
+      <HotWork ref="hotWork" title="热门作品"/>
+      <HotCollection ref="hotCollection" title="热门专辑"/>
+      <HotAuthor ref="hotAuthor" title="关系"/>
       <DoubleCheck ref="doubleCheck"/>
       <PlayList ref="playList"/>
     </div>;

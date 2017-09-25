@@ -26,7 +26,7 @@ class TopNav extends migi.Component {
       </form>
       <a href="#/my" class="user">
         <span>{ window.$CONFIG.userName || '' }</span>
-        <img src={ '//zhuanquan.xyz/img/blank.png' }/>
+        <img src={ window.$CONFIG.userPic || '//zhuanquan.xyz/img/f59284bd66f39bcfc70ef62eee10e186.png' }/>
       </a>
     </div>;
   }

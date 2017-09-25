@@ -1,10 +1,29 @@
 /**
  * Created by army on 2017/7/1.
  */
- 
+
 .cp-playlist{
+  margin-top:0.1rem;
   background:#fff;
-  .list{
+  .hot{
+    float:left;
+    width:6rem;
+    border:1px solid #D9D9D9;
+    border-radius:0.1rem;
+  }
+  .new{
+    float:right;
+    width:6rem;
+    border:1px solid #D9D9D9;
+    border-radius:0.1rem;
+  }
+  h4{
+    padding-left:0.3rem;
+    color:#4E8EB0;
+    font-weight:400;
+    line-height:0.5rem;
+  }
+  .list,.list2{
     border-top:1px solid #EDF3F7;
     li{
       display:flex;
@@ -21,10 +40,15 @@
         content:' ';
       }
       .pic{
-        display:block;
         width:0.53rem;
         height:100%;
-        background-size:cover!important;
+        background:url(../hotwork/works_bg.png) no-repeat center;
+        background-size:contain;
+        img{
+          display:block;
+          width:100%;
+          height:100%;
+        }
       }
       .txt{
         flex:1;

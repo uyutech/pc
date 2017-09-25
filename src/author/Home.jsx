@@ -25,9 +25,7 @@ class Home extends migi.Component {
       if(res.success) {
         let data = res.data;
         hotWork.dataList = data.Hot_Works_Items;
-        hotWork.autoWidth();
         hotAuthor.dataList = data.AuthorToAuthor;
-        hotAuthor.autoWidth();
       }
       else {
         alert(res.message || util.ERROR_MESSAGE);
@@ -41,8 +39,7 @@ class Home extends migi.Component {
       <HotWork ref="hotWork" title="热门作品"/>
       <HotCollection ref="hotCollection" title="热门专辑"/>
       <HotAuthor ref="hotAuthor" title="关系"/>
-      <h5 class="dynamic">作者动态</h5>
-      <Dynamic/>
+      <Dynamic title="作者动态"/>
     </div>;
   }
 }

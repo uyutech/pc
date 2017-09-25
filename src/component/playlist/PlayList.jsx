@@ -14,6 +14,14 @@ class PlayList extends migi.Component {
     });
     $(self.ref.list.element).html(s);
   }
+  setData2(data) {
+    let self = this;
+    let s = '';
+    (data || []).forEach(function(item) {
+      s += self.genItem(item);
+    });
+    $(self.ref.list2.element).html(s);
+  }
   appendData(data) {
     let self = this;
     let s = '';
@@ -24,7 +32,9 @@ class PlayList extends migi.Component {
   }
   genItem(item) {
     return <li>
-      <a href={ `/works/${item.WorksID}` } class="pic" style={ `background:url(${item.cover_Pic || item.CoverPic || '//zhuanquan.xyz/img/blank.png'})` }/>
+      <a href={ `/works/${item.WorksID}` } class="pic">
+        <img src={ item.cover_Pic || '//zhuanquan.xyz/img/blank.png' }/>
+      </a>
       <div class="txt" worksId={ item.WorksID || item.WorkID }>
         <a href={ `/works/${item.WorksID}` } class="name">{ item.Title }</a>
         <p class="intro">{ item.sub_Title }</p>
@@ -41,8 +51,15 @@ class PlayList extends migi.Component {
     util.goto(`/works/${id}`);
   }
   render() {
-    return <div class="cp-playlist">
-      <ul class="list" ref="list"/>
+    return <div class="cp-playlist fn-clear">
+      <div class="hot">
+        <h4>热度排行榜</h4>
+        <ul class="list" ref="list"/>
+      </div>
+      <div class="new">
+        <h4>新鲜排行榜</h4>
+        <ul class="list2" ref="list2"/>
+      </div>
     </div>;
   }
 }

@@ -75,6 +75,12 @@ class Works extends migi.Component {
         self.ref.playList.setData(data.data);
       }
     });
+    util.postJSON('api/author/SearchWorks', { AuthorID: self.authorID, Parameter, Skip: 1, Take: 10, SortType: '0' }, function(res) {
+      if(res.success) {
+        let data = res.data;
+        self.ref.playList.setData2(data.data);
+      }
+    });
   }
   switchType(e, vd) {
     let $ul = $(vd.element);
@@ -86,17 +92,6 @@ class Works extends migi.Component {
   render() {
     return <div class="works fn-hide">
       <DoubleCheck ref="doubleCheck"/>
-      <div class="bar">
-        <ul class="btn fn-clear">
-          <li class="all">播放全部</li>
-          <li class="audio"></li>
-          <li class="video"></li>
-        </ul>
-        <ul class="type fn-clear" onClick={ this.switchType }>
-          <li class="cur" rel="1">最热</li>
-          <li rel="0">最新</li>
-        </ul>
-      </div>
       <PlayList ref="playList"/>
     </div>;
   }
