@@ -23,7 +23,7 @@ window.setHash = function(hash) {
 };
 window.loginWeibo = function(url) {
   let hash = location.hash || '';
-  location.href = url + '?goto=' + encodeURIComponent('//' + location.hostname + hash);
+  location.href = url;
 };
 
 function iframeGoto(hash) {
