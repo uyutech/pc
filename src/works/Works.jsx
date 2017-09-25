@@ -18,6 +18,7 @@ class Works extends migi.Component {
       let workComment = self.ref.workComment;
       media.on('switchSubWork', function(data) {
         self.subWorkID = data[0].ItemID;
+        workComment.subWorkID = self.subWorkID;
         workComment.barrageTime = 0;
       });
       media.on('timeupdate', function(data) {

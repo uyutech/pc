@@ -50,7 +50,7 @@ class Author extends migi.Component {
         }
       });
       setTimeout(function() {
-        tags.emit('change', '1');
+        tags.emit('change', '2');
       }, 100);
     });
   }

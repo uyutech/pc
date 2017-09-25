@@ -41,6 +41,7 @@ class WorkComment extends migi.Component {
   @bind hasContent
   @bind loading
   @bind worksID
+  @bind subWorkID
   @bind barrageTime
   show() {
     let self = this;
