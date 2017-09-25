@@ -69,7 +69,7 @@ class Profile extends migi.Component {
     }
   }
   render() {
-    return <div class="profile">
+    return <div class="profile fn-clear">
       <div class="pic">
         <img src={ this.headUrl || '//zhuanquan.xyz/img/c370ff3fa46f4273d0f73147459a43d8.png' }/>
         <b class="v"/>
