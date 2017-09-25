@@ -59,7 +59,7 @@ class Author extends migi.Component {
       </div>
       <div class="c" ref="c">
         {
-          this.list.map(function(item) {console.log(item);
+          this.list.map(function(item) {
             return <ul>{ item }</ul>;
           })
         }

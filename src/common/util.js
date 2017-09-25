@@ -33,6 +33,12 @@ let util = {
   img192_192: function(url) {
     return url ? url + '-192_192' : url;
   },
+  img144_144: function(url) {
+    return url ? url + '-144_144' : url;
+  },
+  img100_100: function(url) {
+    return url ? url + '-100_100' : url;
+  },
   sort,
   ERROR_MESSAGE: '人气大爆发，请稍后再试。'
 };
