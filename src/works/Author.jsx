@@ -2,7 +2,7 @@
  * Created by army8735 on 2017/9/21.
  */
 
-import authorTemplate from './authorTemplate';
+import authorTemplate from '../component/author/authorTemplate';
 
 class Author extends migi.Component {
   constructor(...data) {
@@ -13,7 +13,9 @@ class Author extends migi.Component {
     let temp = [];
     data.forEach(function(item) {
       item.forEach(function(item2) {
-        temp.push(<li class="label">{ authorTemplate(item2.type).name }</li>);
+        let type = authorTemplate.code2Data[item2.type];
+        let label = item2.type === '141' ? item2.list[0].Tips : type.display;
+        temp.push(<li class="label">{ label }</li>);
         item2.list.forEach(function(item3) {
           temp.push(<li class="item" id={ item3.ID }><a href={ `/author/${item3.ID}` }>{ item3.AuthName }</a></li>);
         });
@@ -39,7 +41,7 @@ class Author extends migi.Component {
         <a class="prev" href="#" onClick={ this.clickPrev }>查看上页</a>
         <a class="next" href="#" onClick={ this.clickNext }>查看下页</a>
       </div>
-      <div class="c" ref="c" onClick={ { '.item': this.clickAuthor } }>
+      <div class="c" ref="c">
         <ul>
           {
             this.list

@@ -19,7 +19,7 @@ class TopNav extends migi.Component {
     }
   }
   render() {
-    return <div class="cp-topnav gwrap">
+    return <div class="cp-topnav">
       <a href="#/">每天转转圈 玩转每个圈</a>
       <form class="search" onSubmit={ this.submit }>
         <input type="text" ref="input" maxlength="16" placeholder="搜索"/>
