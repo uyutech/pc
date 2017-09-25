@@ -15,16 +15,25 @@ if(parent !== window) {
     });
     let top = document.body.scrollTop || document.documentElement.scrollTop;
     parent.setTop && parent.setTop(top);
-    document.body.addEventListener('click', function(e) {
-      if(e.target.nodeName === 'A') {
-        let href = e.target.getAttribute('href') || '';
+
+    function findA(node) {
+      if(node && node !== document.body && node.nodeName === 'A') {
+        let href = node.getAttribute('href') || '';
         if(href && href.charAt(0) !== '#') {
           // 相对/根路径或相对路径
           if(href.charAt(0) !== '/' || href.indexOf('//') !== 0) {
-            e.preventDefault();
             parent.setHash && parent.setHash(href);
+            return true;
           }
         }
+      }
+      else if(node.parentNode) {
+        return findA(node.parentNode);
+      }
+    }
+    document.body.addEventListener('click', function(e) {
+      if(findA(e.target)) {
+        e.preventDefault();
       }
     });
   }
