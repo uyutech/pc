@@ -53,7 +53,7 @@ class DoubleCheck extends migi.Component {
       $lis.each(function(index, li) {
         let $li = $(li);
         param.push({
-          Filterlevel: $li.text()
+          Filterlevel: $li.attr('tagID')
         });
       });
       param = JSON.stringify(param);
