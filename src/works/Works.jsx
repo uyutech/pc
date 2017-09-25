@@ -49,6 +49,7 @@ class Works extends migi.Component {
         let workHash = {};
         let workList = [];
         let authorList = [];
+        let authorHash = {};
         works.forEach(function(item) {
           // 先按每个小作品类型排序其作者
           util.sort(item.Works_Item_Author, itemTemplate(item.ItemType).authorSort || function() {});
@@ -56,6 +57,13 @@ class Works extends migi.Component {
           let bigType = itemTemplate(item.ItemType).bigType;
           workHash[bigType] = workHash[bigType] || [];
           workHash[bigType].push(item);
+          item.Works_Item_Author.forEach(function(item) {
+            authorHash[item.WorksAuthorType] = authorHash[item.WorksAuthorType] || {};
+            if(!authorHash[item.WorksAuthorType][item.ID]) {
+              authorHash[item.WorksAuthorType][item.ID] = true;
+              authorList.push(item);
+            }
+          });
         });
         Object.keys(workHash).forEach(function(k) {
           workList.push({
@@ -66,41 +74,76 @@ class Works extends migi.Component {
         util.sort(workList, function(a, b) {
           return a.bigType > b.bigType;
         });
-        workList.forEach(function(works) {
-          let authors = [];
-          works.value.forEach(function(work) {
-            authors = authors.concat(work.Works_Item_Author);
-          });
-          // 去重
-          let hash = {};
-          for(let i = 0; i < authors.length; i++) {
-            let author = authors[i];
-            let key = author.ID + ',' + author.WorksAuthorType;
-            if(hash[key]) {
-              authors.splice(i--, 1);
-              continue;
-            }
-            else {
-              hash[key] = true;
-            }
-          }
-          // 合并
-          hash = {};
-          let nAuthors = [];
-          authors.forEach(function(author) {
-            if(hash.hasOwnProperty(author.WorksAuthorType)) {
-              nAuthors[hash[author.WorksAuthorType]].list.push(author);
-            }
-            else {
-              hash[author.WorksAuthorType] = nAuthors.length;
-              nAuthors.push({
-                type: author.WorksAuthorType,
-                list: [author]
-              });
-            }
-          });
-          authorList.push(nAuthors);
+        // workList.forEach(function(works) {
+        //   let authors = [];
+        //   works.value.forEach(function(work) {
+        //     authors = authors.concat(work.Works_Item_Author);
+        //   });
+        //   // 去重
+        //   let hash = {};
+        //   for(let i = 0; i < authors.length; i++) {
+        //     let author = authors[i];
+        //     let key = author.ID + ',' + author.WorksAuthorType;
+        //     if(hash[key]) {
+        //       authors.splice(i--, 1);
+        //       continue;
+        //     }
+        //     else {
+        //       hash[key] = true;
+        //     }
+        //   }
+        //   // 合并
+        //   hash = {};
+        //   let nAuthors = [];
+        //   authors.forEach(function(author) {
+        //     if(hash.hasOwnProperty(author.WorksAuthorType)) {
+        //       nAuthors[hash[author.WorksAuthorType]].list.push(author);
+        //     }
+        //     else {
+        //       hash[author.WorksAuthorType] = nAuthors.length;
+        //       nAuthors.push({
+        //         type: author.WorksAuthorType,
+        //         list: [author]
+        //       });
+        //     }
+        //   });
+        //   authorList.push(nAuthors);
+        // });
+        // self.ref.author.setAuthor(authorList);
+        authorHash = {};
+        let tempHash = {
+          901: 1,
+          111: 1,
+          112: 1,
+          121: 2,
+          122: 2,
+          411: 2,
+          421: 2,
+          131: 2,
+          134: 2,
+          211: 3,
+          312: 3,
+          311: 3,
+          313: 3,
+          351: 3,
+          331: 3,
+          332: 3,
+        };
+        authorList.forEach(function(item) {
+          let type = tempHash[item.WorksAuthorType] || 3;
+          authorHash[type] = authorHash[type] || [];
+          authorHash[type].push(item);
         });
+        authorList = [];
+        if(authorHash[1]) {
+          authorList.push(authorHash[1]);
+        }
+        if(authorHash[2]) {
+          authorList.push(authorHash[2]);
+        }
+        if(authorHash[3]) {
+          authorList.push(authorHash[3]);
+        }
         self.ref.author.setAuthor(authorList);
 
         media.setWorks(workList);
@@ -150,7 +193,6 @@ class Works extends migi.Component {
         <li class="audio fn-hide" rel="audio">音频</li>
         <li class="video fn-hide" rel="video">视频</li>
       </ul>
-      <Intro ref="intro"/>
       <WorkComment ref="workComment"/>
     </div>;
   }

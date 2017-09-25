@@ -10,21 +10,37 @@ class Author extends migi.Component {
   }
   @bind list = []
   setAuthor(data) {
-    let temp = [];
+    let list = [];
+    // let temp = [];
     data.forEach(function(item) {
-      item.forEach(function(item2) {
-        let type = authorTemplate.code2Data[item2.type];
-        let label = item2.type === '141' ? item2.list[0].Tips : type.display;
-        temp.push(<li class="label">{ label }</li>);
-        item2.list.forEach(function(item3) {
-          temp.push(<li class="item" id={ item3.ID }><a href={ `/author/${item3.ID}` }>{ item3.AuthName }</a></li>);
-        });
+      let temp = [];
+      let last = -1;
+      let lastTips = '';
+      item.forEach(function(item) {
+        // console.log(item);
+        if(item.WorksAuthorType !== last || item.Tips !== lastTips) {
+          let type = authorTemplate.code2Data[item.WorksAuthorType];
+          let label = item.Tips || type.display;
+          temp.push(<li class="label">{ label }</li>);
+        }
+        last = item.WorksAuthorType;
+        lastTips = item.Tips;
+        temp.push(<li class="item" id={ item.ID }><a href={ `/author/${item.ID}` }>{ item.AuthName }</a></li>);
       });
+      list.push(temp);
+    //   item.forEach(function(item2) {
+    //     let type = authorTemplate.code2Data[item2.type];
+    //     let label = item2.type === '141' ? item2.list[0].Tips : type.display;
+    //     temp.push(<li class="label">{ label }</li>);
+    //     item2.list.forEach(function(item3) {
+    //       temp.push(<li class="item" id={ item3.ID }><a href={ `/author/${item3.ID}` }>{ item3.AuthName }</a></li>);
+    //     });
+    //   });
     });
-    this.list = temp;
-    let $c = $(this.ref.c.element);
-    let $ul = $c.find('ul');
-    $c.css('width', $ul.width() + 1);
+    this.list = list;
+    // let $c = $(this.ref.c.element);
+    // let $ul = $c.find('ul');
+    // $c.css('width', $ul.width() + 1);
   }
   clickPrev(e) {
     e.preventDefault();
@@ -42,11 +58,11 @@ class Author extends migi.Component {
         <a class="next" href="#" onClick={ this.clickNext }>查看下页</a>
       </div>
       <div class="c" ref="c">
-        <ul>
-          {
-            this.list
-          }
-        </ul>
+        {
+          this.list.map(function(item) {console.log(item);
+            return <ul>{ item }</ul>;
+          })
+        }
       </div>
     </div>;
   }
