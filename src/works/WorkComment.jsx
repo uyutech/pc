@@ -238,7 +238,7 @@ class WorkComment extends migi.Component {
         <input type="submit" class={ 'submit' + (this.hasContent && !this.loading ? '' : ' dis') } value="发布评论"/>
       </form>
       <Page ref="page"/>
-      <Comment ref="comment" zanUrl="api/works/AddLikeBehavior" subUrl="api/works/GetTocomment_T_List" delUrl="api/works/DeleteCommentByID"/>
+      <Comment ref="comment" zanUrl="api/works/AddWorkCommentLike" subUrl="api/works/GetTocomment_T_List" delUrl="api/works/DeleteCommentByID"/>
     </div>;
   }
 }

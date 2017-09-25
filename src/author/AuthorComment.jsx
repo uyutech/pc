@@ -232,7 +232,7 @@ class AuthorComment extends migi.Component {
         <input type="submit" class={ 'submit' + (this.hasContent && !this.loading ? '' : ' dis') } value="发布评论"/>
       </form>
       <Page ref="page"/>
-      <Comment ref="comment" zanUrl="api/author/AddLikeBehavior" subUrl="api/author/GetTocomment_T_List" delUrl="api/author/DeleteCommentByID"/>
+      <Comment ref="comment" zanUrl="api/author/AddWorkCommentLike" subUrl="api/author/GetTocomment_T_List" delUrl="api/author/DeleteCommentByID"/>
     </div>;
   }
 }

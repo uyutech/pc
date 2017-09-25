@@ -6,11 +6,20 @@ class Profile extends migi.Component {
   constructor(...data) {
     super(...data);
   }
+  @bind userName = window.$CONFIG.userName
   click(e) {
     e.preventDefault();
+    let self = this;
     let name = window.prompt('请输入想要修改的昵称', window.$CONFIG.userName).trim();
     if(name !== window.$CONFIG.userName) {
-      alert(name);
+      util.postJSON('api/users/UpdateNickName', { NickName: name }, function(res) {
+        if(res.success) {
+          self.userName = name;
+        }
+        else {
+          alert(res.message || util.ERROR_MESSAGE);
+        }
+      });
     }
   }
   render() {
@@ -19,7 +28,7 @@ class Profile extends migi.Component {
         <img src={ window.$CONFIG.userPic || '//zhuanquan.xyz/img/blank.png' }/>
       </div>
       <div class="txt">
-        <strong>{ window.$CONFIG.userName }</strong>
+        <strong>{ this.userName }</strong>
         <a href="#" class="edit" onClick={ this.click }>编辑</a>
       </div>
     </div>;
