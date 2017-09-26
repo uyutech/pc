@@ -37,7 +37,7 @@ class HotWork extends migi.Component {
                 this.dataList.map(function(item) {
                   return <li worksID={ item.WorksID }>
                     <a href={ `/works/${item.WorksID}` } class="pic">
-                      <img src={ util.img192_192(item.cover_Pic) || '//zhuanquan.xyz/img/blank.png' }/>
+                      <img src={ util.img192_192(item.cover_Pic) || '//zhuanquan.xin/img/blank.png' }/>
                       <div class="num"><b class="audio"/>{ item.Popular }</div>
                       <div class="ath">{ '' }</div>
                     </a>

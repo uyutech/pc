@@ -9,9 +9,9 @@ class Author extends migi.Component {
   render() {
     return <div class="author">
       <div class="info fn-clear">
-        <div class="bg" style={ `background-image:url('//zhuanquan.xyz/img/8476e8a946918ca008f91704fe3049f5.png')` }/>
+        <div class="bg" style={ `background-image:url('//zhuanquan.xin/img/8476e8a946918ca008f91704fe3049f5.png')` }/>
         <div class="pic">
-          <img src={ '//zhuanquan.xyz/img/8476e8a946918ca008f91704fe3049f5.png' }/>
+          <img src={ '//zhuanquan.xin/img/8476e8a946918ca008f91704fe3049f5.png' }/>
         </div>
         <div class="txt">
           <h3>昵称</h3>

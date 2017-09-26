@@ -9,9 +9,9 @@ class User extends migi.Component {
   render() {
     return <div class="user">
       <div class="info fn-clear">
-        <div class="bg" style={ `background-image:url(${window.$CONFIG.userPic || '//zhuanquan.xyz/img/blank.png'})` }/>
+        <div class="bg" style={ `background-image:url(${window.$CONFIG.userPic || '//zhuanquan.xin/img/blank.png'})` }/>
         <div class="pic">
-          <img src={ window.$CONFIG.userPic || '//zhuanquan.xyz/img/blank.png' }/>
+          <img src={ window.$CONFIG.userPic || '//zhuanquan.xin/img/blank.png' }/>
         </div>
         <div class="txt">
           <h3>{ window.$CONFIG.userName }</h3>
