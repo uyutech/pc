@@ -31,7 +31,7 @@ class PlayList extends migi.Component {
     $(self.ref.list.element).append(s);
   }
   genItem(item) {
-    return <li>
+    return <li class="fn-clear">
       <a href={ `/works/${item.WorksID}` } class="pic">
         <img src={ util.img100_100(item.cover_Pic) || '//zhuanquan.xin/img/blank.png' }/>
       </a>
@@ -53,11 +53,11 @@ class PlayList extends migi.Component {
   render() {
     return <div class="cp-playlist fn-clear">
       <div class="hot">
-        <h4>最热</h4>
+        <h4>最热<small>未来还将解锁更多人气数据-3-</small></h4>
         <ul class="list" ref="list"/>
       </div>
       <div class="new">
-        <h4>最新</h4>
+        <h4>最新<small>未来会显示更多歌曲信息-3-</small></h4>
         <ul class="list2" ref="list2"/>
       </div>
     </div>;

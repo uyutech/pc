@@ -31,6 +31,12 @@ class Search extends migi.Component {
             value: item
           });
         });
+        data.Audio.forEach(function(item) {
+          list.push({
+            key: 'audio',
+            value: item
+          });
+        });
         if(list.length) {
           self.list = list;
           self.autoWidth();

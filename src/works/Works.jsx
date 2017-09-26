@@ -121,6 +121,7 @@ class Works extends migi.Component {
           421: 2,
           131: 2,
           134: 2,
+          141: 2,
           211: 3,
           312: 3,
           311: 3,
@@ -136,12 +137,24 @@ class Works extends migi.Component {
         });
         authorList = [];
         if(authorHash[1]) {
+          let seq = [901, 111, 112];
+          util.sort(authorHash[1], function(a, b) {
+            return seq.indexOf(a.WorksAuthorType) > seq.indexOf(b.WorksAuthorType);
+          });
           authorList.push(authorHash[1]);
         }
         if(authorHash[2]) {
+          let seq = [121, 122, 411, 421, 131, 134, 141];
+          util.sort(authorHash[2], function(a, b) {
+            return seq.indexOf(a.WorksAuthorType) > seq.indexOf(b.WorksAuthorType);
+          });
           authorList.push(authorHash[2]);
         }
         if(authorHash[3]) {
+          let seq = [211, 312, 311, 313, 351, 331, 332];
+          util.sort(authorHash[3], function(a, b) {
+            return seq.indexOf(a.WorksAuthorType) > seq.indexOf(b.WorksAuthorType);
+          });
           authorList.push(authorHash[3]);
         }
         self.ref.author.setAuthor(authorList);

@@ -17,7 +17,7 @@ let topNav = migi.render(
 let cIframe;
 
 window.setTop = function(top) {
-  topNav.setTop(top);
+  // topNav.setTop(top);
 };
 window.setHash = function(hash) {
   location.hash = hash;
