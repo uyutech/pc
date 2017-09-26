@@ -18,14 +18,20 @@ class TopNav extends migi.Component {
       this.emit('search', v);
     }
   }
+  click(e) {
+    if(!window.$CONFIG.isLogin) {
+      e.preventDefault();
+      migi.eventBus.emit('NEED_LOGIN');
+    }
+  }
   render() {
     return <div class="cp-topnav">
-      <a class="logo" href="#/">每天转转圈 玩转每个圈</a>
+      <a class="logo" href="#/">转圈还在测试中，感谢您的关注和包涵！我们会努力做得更好！</a>
       <form class="search" onSubmit={ this.submit }>
         <input type="text" ref="input" maxlength="16" placeholder="弱弱的初级搜索功能QAQ"/>
       </form>
-      <a href="#/my" class="user">
-        <span>{ window.$CONFIG.userName || '' }</span>
+      <a href="#/my" class="user" onClick={ this.click }>
+        <span>{ window.$CONFIG.userName || '登陆/注册' }</span>
         <img src={ window.$CONFIG.userPic || '//zhuanquan.xin/img/f59284bd66f39bcfc70ef62eee10e186.png' }/>
       </a>
     </div>;
