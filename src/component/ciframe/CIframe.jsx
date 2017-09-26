@@ -7,7 +7,7 @@ class CIframe extends migi.Component {
     super(...data);
   }
   render() {
-    return <iframe class="cp-ciframe" src="about:blank" frameBorder="0" scrolling="auto"/>;
+    return <iframe class="cp-ciframe" src="about:blank" frameBorder="0" scrolling="auto" allowfullscreen="allowfullscreen"/>;
   }
 }
 
