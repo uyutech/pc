@@ -28,7 +28,12 @@ class My extends migi.Component {
   clickOut(e) {
     e.preventDefault();
     util.postJSON('api/users/Cancellation', function(res) {
-      location.reload(true);
+      if(window.parent && window.parent !== window) {
+        window.parent.location.reload(true);
+      }
+      else {
+        location.reload(true);
+      }
     });
   }
   render() {
