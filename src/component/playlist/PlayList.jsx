@@ -53,11 +53,11 @@ class PlayList extends migi.Component {
   render() {
     return <div class="cp-playlist fn-clear">
       <div class="hot">
-        <h4>热度排行榜</h4>
+        <h4>最热</h4>
         <ul class="list" ref="list"/>
       </div>
       <div class="new">
-        <h4>新鲜排行榜</h4>
+        <h4>最新</h4>
         <ul class="list2" ref="list2"/>
       </div>
     </div>;

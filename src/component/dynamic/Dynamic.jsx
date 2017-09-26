@@ -16,8 +16,8 @@ class Dynamics extends migi.Component {
       <h3>{ this.props.title }</h3>
       <b class="line"/>
       <div class="fn fn-clear">
-        <a href="#" class="prev">查看上页</a>
-        <a href="#" class="next">查看下页</a>
+        <a href="#" class="prev">上一页</a>
+        <a href="#" class="next">下一页</a>
       </div>
       <ul class={ this.list.length ? '' : 'fn-hide' } onClick={ { li: this.click } }>
         {

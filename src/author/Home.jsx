@@ -36,10 +36,10 @@ class Home extends migi.Component {
   }
   render() {
     return <div class="home">
-      <HotWork ref="hotWork" title="热门作品"/>
-      <HotCollection ref="hotCollection" title="热门专辑"/>
-      <HotAuthor ref="hotAuthor" title="关系"/>
-      <Dynamic title="作者动态"/>
+      <HotWork ref="hotWork" title="主打作品"/>
+      <HotCollection ref="hotCollection" title="专辑"/>
+      <HotAuthor ref="hotAuthor" title="朋友"/>
+      <Dynamic title="全网动态"/>
     </div>;
   }
 }
