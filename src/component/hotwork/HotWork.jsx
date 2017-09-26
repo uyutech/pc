@@ -24,7 +24,7 @@ class HotWork extends migi.Component {
   render() {
     let authorId = this.props.authorId;
     return <div class="cp-hotwork">
-      <h3>{ this.props.title }</h3>
+      <h3>{ this.props.title }<small>未来会根据你的口味进行精准智能的推送！>3&lt;</small></h3>
       <b class="line"/>
       <div class="fn fn-clear">
         <a href="#" class="prev" onClick={ this.clickPrev }>上一页</a>
@@ -37,8 +37,7 @@ class HotWork extends migi.Component {
                 this.dataList.map(function(item) {
                   return <li worksID={ item.WorksID }>
                     <a href={ `/works/${item.WorksID}` } class="pic">
-                      <img src={ util.img192_192(item.cover_Pic) || '//zhuanquan.xin/img/blank.png' }/>
-                      <div class="num"><b class="audio"/>{ item.Popular }</div>
+                      <img src={ util.img144_144(item.cover_Pic) || '//zhuanquan.xin/img/blank.png' }/>
                       <div class="ath">{ '' }</div>
                     </a>
                     <a href={ `/works/${item.WorksID}` } class="txt">{ item.Title }</a>

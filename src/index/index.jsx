@@ -7,6 +7,7 @@ import './index.less';
 
 import TopNav from '../component/topnav/TopNav.jsx';
 import CIframe from '../component/ciframe/CIframe.jsx';
+import QuanNiang from './QuanNiang.jsx';
 
 let topNav = migi.render(
   <TopNav/>,
@@ -50,3 +51,8 @@ iframeGoto(location.hash);
 topNav.on('search', function(kw) {
   location.hash = '/search/' + kw;
 });
+
+migi.render(
+  <QuanNiang/>,
+  document.body
+);

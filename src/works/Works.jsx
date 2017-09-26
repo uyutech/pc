@@ -187,12 +187,14 @@ class Works extends migi.Component {
   render() {
     return <div class="works fn-clear">
       <Title ref="title"/>
-      <Author ref="author"/>
-      <Media ref="media"/>
-      <ul class="type" ref="type" onClick={ { li: this.clickType } }>
-        <li class="audio fn-hide" rel="audio">音频</li>
-        <li class="video fn-hide" rel="video">视频</li>
-      </ul>
+      <div class="temp fn-clear">
+        <ul class="type" ref="type" onClick={ { li: this.clickType } }>
+          <li class="audio fn-hide" rel="audio">音频</li>
+          <li class="video fn-hide" rel="video">视频</li>
+        </ul>
+        <Author ref="author"/>
+        <Media ref="media"/>
+      </div>
       <WorkComment ref="workComment"/>
     </div>;
   }

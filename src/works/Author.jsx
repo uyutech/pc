@@ -51,8 +51,6 @@ class Author extends migi.Component {
   clickAuthor(e) {}
   render() {
     return <div class="author">
-      <h3>参与作者</h3>
-      <b class="line"/>
       <div class="fn fn-clear fn-hide">
         <a class="prev" href="#" onClick={ this.clickPrev }>查看上页</a>
         <a class="next" href="#" onClick={ this.clickNext }>查看下页</a>

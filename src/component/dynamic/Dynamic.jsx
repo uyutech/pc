@@ -15,7 +15,7 @@ class Dynamics extends migi.Component {
     return <div class="cp-dynamic">
       <h3>{ this.props.title }</h3>
       <b class="line"/>
-      <div class="fn fn-clear">
+      <div class="fn fn-clear fn-hide">
         <a href="#" class="prev">上一页</a>
         <a href="#" class="next">下一页</a>
       </div>

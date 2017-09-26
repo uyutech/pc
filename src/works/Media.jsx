@@ -7,7 +7,7 @@ import Audio from './Audio.jsx';
 import Video from './Video.jsx';
 import itemTemplate from './itemTemplate';
 
-let WIDTH = 1270;
+let WIDTH = 500;
 let currentTime = 0;
 let duration = 0;
 

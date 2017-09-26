@@ -91,6 +91,7 @@ class Audio extends migi.Component {
   }
   play() {
     this.ref.audio.element.play();
+    this.showLyrics = true;
     return this;
   }
   pause() {
@@ -110,6 +111,7 @@ class Audio extends migi.Component {
   @bind showLyricsMode
   @bind duration
   @bind hasLoaded
+  @bind showLyrics
   clickLike(e, vd) {
     let self = this;
     let $vd = $(vd.element);
@@ -209,7 +211,7 @@ class Audio extends migi.Component {
         <li class="download"><a href={ this.fileUrl } download={ this.fileUrl } onClick={ this.clickDownload }/></li>
         <li class="share" onClick={ this.clickShare }/>
       </ul>
-      <div class="lyrics-con">
+      <div class={ 'lyrics-con' + (this.showLyrics ? '' : ' fn-hide') }>
         <div class={ 'lyrics-roll' + (!this.showLyricsMode ? '' : ' fn-hide') }>
           <div class="c" ref="lyricsRoll">
             {

@@ -6,9 +6,15 @@ import './find.html';
 import './index.less';
 
 import Find from './Find.jsx';
+import BotNav from '../component/botnav/BotNav.jsx';
 
 let find = migi.render(
   <Find/>,
   '#page'
 );
 find.load();
+
+migi.render(
+  <BotNav/>,
+  document.body
+);

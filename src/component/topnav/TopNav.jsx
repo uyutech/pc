@@ -22,7 +22,7 @@ class TopNav extends migi.Component {
     return <div class="cp-topnav">
       <a class="logo" href="#/">每天转转圈 玩转每个圈</a>
       <form class="search" onSubmit={ this.submit }>
-        <input type="text" ref="input" maxlength="16" placeholder="搜索"/>
+        <input type="text" ref="input" maxlength="16" placeholder="弱弱的初级搜索功能QAQ"/>
       </form>
       <a href="#/my" class="user">
         <span>{ window.$CONFIG.userName || '' }</span>
