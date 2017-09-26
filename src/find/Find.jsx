@@ -102,7 +102,7 @@ class Find extends migi.Component {
       <Banner/>
       <HotWork ref="hotWork" title="热门作品"/>
       <HotCollection ref="hotCollection" title="热门专辑"/>
-      <HotAuthor ref="hotAuthor" title="关系"/>
+      <HotAuthor ref="hotAuthor" title="热门作者"/>
       <DoubleCheck ref="doubleCheck"/>
       <PlayList ref="playList"/>
     </div>;
