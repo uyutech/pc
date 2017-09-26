@@ -21,14 +21,17 @@ class HotWork extends migi.Component {
   clickNext(e) {
     e.preventDefault();
   }
+  clickChange(e) {
+    e.preventDefault();
+    this.emit('change');
+  }
   render() {
     let authorId = this.props.authorId;
     return <div class="cp-hotwork">
       <h3>{ this.props.title }<small>未来会根据你的口味进行精准智能的推送！>3&lt;</small></h3>
       <b class="line"/>
       <div class="fn fn-clear">
-        <a href="#" class="prev" onClick={ this.clickPrev }>上一页</a>
-        <a href="#" class="next" onClick={ this.clickNext }>下一页</a>
+        <a href="#" class="change" onClick={ this.clickChange }>换一批</a>
       </div>
       {
         this.dataList && this.dataList.length

@@ -17,7 +17,7 @@ class HotCollection extends migi.Component {
     return <div class="cp-hotcollection">
       <h3>{ this.props.title }</h3>
       <b class="line"/>
-      <div class="fn fn-clear">
+      <div class="fn fn-clear fn-hide">
         <a href="#" class="prev" onClick={ this.clickPrev }>上一页</a>
         <a href="#" class="next" onClick={ this.clickNext }>下一页</a>
       </div>

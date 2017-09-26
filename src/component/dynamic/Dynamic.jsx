@@ -13,7 +13,7 @@ class Dynamics extends migi.Component {
   }
   render() {
     return <div class="cp-dynamic">
-      <h3>{ this.props.title }</h3>
+      <h3>{ this.props.title }<small>等这个功能上线，就再也不用担心特关是死的啦！>3&lt;</small></h3>
       <b class="line"/>
       <div class="fn fn-clear fn-hide">
         <a href="#" class="prev">上一页</a>

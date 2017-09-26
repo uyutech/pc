@@ -48,6 +48,15 @@ class Find extends migi.Component {
           self.loadPlayList();
         }
       });
+      let hotWork = self.ref.hotWork;
+      hotWork.on('change', function() {
+        util.postJSON('api/find/Hot_works_List', function(res) {
+          if(res.success) {
+            let data = res.data;
+            hotWork.dataList = data;
+          }
+        });
+      });
     });
   }
   load() {
