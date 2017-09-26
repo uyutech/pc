@@ -220,7 +220,7 @@ class WorkComment extends migi.Component {
   }
   render() {
     return <div class="comments">
-      <h3>评论</h3>
+      <h3>评论<small>之后还会增加简介、歌词、翻唱等多种功能，敬请期待-3-</small></h3>
       <b class="line"/>
       <div class="fn fn-clear">
         <ul class="type2 fn-clear" onClick={ { li: this.switchType2 } }>

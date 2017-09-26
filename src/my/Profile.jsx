@@ -29,7 +29,6 @@ class Profile extends migi.Component {
       </div>
       <div class="txt">
         <strong>{ this.userName }</strong>
-        <a href="#" class="edit" onClick={ this.click }>编辑</a>
       </div>
     </div>;
   }
