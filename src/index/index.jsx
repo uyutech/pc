@@ -58,6 +58,6 @@ migi.render(
 );
 
 migi.render(
-  <div class="info"></div>,
+  <div class="info"/>,
   document.body
 );

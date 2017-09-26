@@ -11,7 +11,7 @@ class Follow extends migi.Component {
     return <div class="follow">
       <h3>我的关注</h3>
       <b class="line"/>
-      <div class="fn fn-clear">
+      <div class="fn fn-clear fn-hide">
         <a href="#" class="prev">查看上页</a>
         <a href="#" class="next">查看下页</a>
       </div>
@@ -19,25 +19,14 @@ class Follow extends migi.Component {
         {
           this.list.map(function(item) {
             return <li>
-              <a href="#" class="pic">
-                <img src="//tva4.sinaimg.cn/crop.7.1.129.129.180/64319a89gw1f62p9lp7hyj203w03wq2x.jpg"/>
-                <b class={ `cp-author_type` }/>
-                <b class={ `cp-author_type` }/>
+              <a href={ '/author/' + item.AuthorID } class="pic">
+                <img src={ item.Head_url }/>
               </a>
-              <a href="#" class="txt">{ 123 }</a>
-              <div class="info">合作1次</div>
+              <a href="#" class="txt">{ item.AuthorName }</a>
+              <div class="info">{ item.FansNumber }粉丝</div>
             </li>;
           })
         }
-        <li>
-          <a href="#" class="pic">
-            <img src="//tva4.sinaimg.cn/crop.7.1.129.129.180/64319a89gw1f62p9lp7hyj203w03wq2x.jpg"/>
-            <b class={ `cp-author_type` }/>
-            <b class={ `cp-author_type` }/>
-          </a>
-          <a href="#" class="txt">{ 123 }</a>
-          <div class="info">合作1次</div>
-        </li>
       </ul>
     </div>;
   }

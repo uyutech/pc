@@ -6,11 +6,13 @@ import './my.html';
 import './index.less';
 
 import My from './My.jsx';
+import BotNav from '../component/botnav/BotNav.jsx';
 
 let my = migi.render(
   <My/>,
   '#page'
 );
+my.load();
 
 migi.render(
   <BotNav/>,
