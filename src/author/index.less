@@ -17,7 +17,7 @@
   > .nav{
     position:relative;
     margin:0 auto;
-    padding:0.8rem 2rem;
+    padding:0.6rem 2rem 0;
     box-sizing:border-box;
     height:3rem;
     overflow:hidden;
@@ -72,6 +72,7 @@
       .txt{
         float:left;
         width:4rem;
+        transform:translateY(0.5rem);
         .n{
           display:flex;
           align-items:center;
@@ -292,27 +293,46 @@
     position:relative;
     margin:0.1rem 0;
     z-index:10;
-    color:@colorBg;
+    font-size:0.12rem;
     height:0.24rem;
     text-align:center;
     li{
+      position:relative;
       display:inline-block;
-      margin:0 0.05rem;
-      padding:0 0.1rem;
-      height:100%;
-      border:1px solid #A4D2DF;
-      color:#A4D2DF;
-      font-size:0.12rem;
-      box-sizing:border-box;
-      border-radius:0.24rem;
-      line-height:0.22rem;
-      cursor:pointer;
-      &.cur{
+      margin-right:0.2rem;
+      span{
+        display:inline-block;
+        padding:0 0.1rem;
+        height:0.24rem;
+        border:1px solid #A4D2DF;
+        color:#A4D2DF;
+        border-radius:0.24rem;
+        line-height:0.22rem;
+        box-sizing:border-box;
+        cursor:pointer;
+      }
+      &.cur span{
         border:none;
         color:#fff;
         background:@bgLinearGradient;
         cursor:default;
         line-height:0.24rem;
+      }
+      &:before{
+        display:inline-block;
+        margin-right:0.05rem;
+        width:0.24rem;
+        height:0.24rem;
+        background:url(home.png) no-repeat center;
+        background-size:contain;
+        content:' ';
+        vertical-align:middle;
+      }
+      &.works:before{
+        background-image:url(works.png);
+      }
+      &.comment:before{
+        background-image:url(comment.png);
       }
     }
   }
