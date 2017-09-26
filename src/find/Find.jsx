@@ -52,6 +52,12 @@ class Find extends migi.Component {
   }
   load() {
     let self = this;
+    util.postJSON('api/find/Hot_works_List', function(res) {
+      if(res.success) {
+        let data = res.data;
+        self.ref.hotWork.dataList = data;
+      }
+    });
     util.postJSON('api/find/Hot_Author_List', function(res) {
       if(res.success) {
         let data = res.data;
