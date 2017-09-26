@@ -5,6 +5,7 @@
 import Profile from './Profile.jsx';
 import Follow from './Follow.jsx';
 import Favor from './Favor.jsx';
+import BotNav from '../component/botnav/BotNav.jsx';
 
 class My extends migi.Component {
   constructor(...data) {
@@ -13,8 +14,6 @@ class My extends migi.Component {
   render() {
     return <div class="my">
       <Profile/>
-      <Follow/>
-      <Favor/>
       <a href="#" class="loginout">退出登录</a>
     </div>;
   }

@@ -6,6 +6,7 @@ import './search.html';
 import './index.less';
 
 import Search from './Search.jsx';
+import BotNav from '../component/botnav/BotNav.jsx';
 
 let search = migi.render(
   <Search/>,
@@ -14,3 +15,8 @@ let search = migi.render(
 if(window.$CONFIG.kw && window.$CONFIG.kw.length) {
   search.load(window.$CONFIG.kw);
 }
+
+migi.render(
+  <BotNav/>,
+  document.body
+);

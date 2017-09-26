@@ -11,3 +11,8 @@ let my = migi.render(
   <My/>,
   '#page'
 );
+
+migi.render(
+  <BotNav/>,
+  document.body
+);

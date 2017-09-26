@@ -56,3 +56,8 @@ migi.render(
   <QuanNiang/>,
   document.body
 );
+
+migi.render(
+  <div class="info"></div>,
+  document.body
+);

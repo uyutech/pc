@@ -25,7 +25,7 @@ class Profile extends migi.Component {
   render() {
     return <div class="profile fn-clear">
       <div class="pic">
-        <img src={ window.$CONFIG.userPic || '//zhuanquan.xin/img/blank.png' }/>
+        <img src={ window.$CONFIG.userPic || '//zhuanquan.xin/img/f59284bd66f39bcfc70ef62eee10e186.png' }/>
       </div>
       <div class="txt">
         <strong>{ this.userName }</strong>

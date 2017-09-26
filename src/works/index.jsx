@@ -6,6 +6,7 @@ import './works.html';
 import './index.less';
 
 import Works from './Works.jsx';
+import BotNav from '../component/botnav/BotNav.jsx';
 
 let works = migi.render(
   <Works/>,
@@ -13,3 +14,8 @@ let works = migi.render(
 );
 works.setID(window.$CONFIG.worksID);
 works.load();
+
+migi.render(
+  <BotNav/>,
+  document.body
+);
