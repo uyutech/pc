@@ -21,8 +21,7 @@ window.setTop = function(top) {
 window.setHash = function(hash) {
   location.hash = hash;
 };
-window.loginWeibo = function(url) {
-  let hash = location.hash || '';
+window.goto = function(url) {
   location.href = url;
 };
 

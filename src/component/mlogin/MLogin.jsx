@@ -21,7 +21,7 @@ class NeedLogin extends migi.Component {
     let parent = window.parent;
     if(parent !== window) {
       e.preventDefault();
-      parent.loginWeibo && parent.loginWeibo(window.$CONFIG.loginUrl);
+      parent.goto && parent.goto(window.$CONFIG.loginUrl);
     }
   }
   render() {

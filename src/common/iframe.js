@@ -20,8 +20,13 @@ if(parent !== window) {
       if(node && node !== document.body && node.nodeName === 'A') {
         let href = node.getAttribute('href') || '';
         if(href && href.charAt(0) !== '#') {
+          // 外链
+          if(/^https?:\/\//.test(href)) {
+            parent.goto && parent.goto(href);
+            return true;
+          }
           // 相对/根路径或相对路径
-          if(href.charAt(0) !== '/' || href.indexOf('//') !== 0) {
+          else if(href.charAt(0) !== '/' || href.indexOf('//') !== 0) {
             parent.setHash && parent.setHash(href);
             return true;
           }
