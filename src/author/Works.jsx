@@ -69,16 +69,10 @@ class Works extends migi.Component {
     if(ajax) {
       ajax.abort();
     }
-    ajax = util.postJSON('api/author/SearchWorks', { AuthorID: self.authorID, Parameter, Skip: 1, Take: 10, SortType }, function(res) {
+    ajax = util.postJSON('api/author/SearchWorks', { AuthorID: self.authorID, Parameter, Skip: 0, Take: 10, SortType }, function(res) {
       if(res.success) {
         let data = res.data;
         self.ref.playList.setData(data.data);
-      }
-    });
-    util.postJSON('api/author/SearchWorks', { AuthorID: self.authorID, Parameter, Skip: 1, Take: 10, SortType: '0' }, function(res) {
-      if(res.success) {
-        let data = res.data;
-        self.ref.playList.setData2(data.data);
       }
     });
   }
