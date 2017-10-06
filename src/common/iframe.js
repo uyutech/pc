@@ -41,6 +41,9 @@ if(parent !== window) {
         e.preventDefault();
       }
     });
+    document.addEventListener('DOMContentLoaded', function() {
+      parent.setWidth(document.documentElement.clientWidth);
+    });
   }
 }
 else if(location.pathname !== '/') {

@@ -25,6 +25,12 @@ window.setHash = function(hash) {
 window.goto = function(url) {
   location.href = url;
 };
+window.setWidth = function(width) {
+  let diff = document.documentElement.clientWidth - width;
+  if(diff > 0) {
+    topNav.setMarginRight(diff);
+  }
+};
 
 function iframeGoto(hash) {
   hash = hash || '';

@@ -11,6 +11,9 @@ class TopNav extends migi.Component {
     $(this.element).css('-webkit-transform', `translateY(${-top}px)`);
     $(this.element).css('transform', `translateY(${-top}px)`);
   }
+  setMarginRight(right) {
+    $(this.element).css('margin-right', right);
+  }
   submit(e) {
     e.preventDefault();
     let v = this.ref.input.element.value.trim();
