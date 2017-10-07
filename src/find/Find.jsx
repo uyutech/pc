@@ -99,7 +99,7 @@ class Find extends migi.Component {
         self.ref.playList.setData(data.data);
       }
     });
-    util.postJSON('api/find/GetFindWorkList', { Parameter, Skip: 1, Take: 10, SortType: '0' }, function(res) {
+    util.postJSON('api/find/GetFindWorkList', { Parameter, Skip: 0, Take: 10, SortType: '0' }, function(res) {
       if(res.success) {
         let data = res.data;
         self.ref.playList.setData2(data.data);
